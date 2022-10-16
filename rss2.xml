@@ -9,7 +9,7 @@
     <atom:link href="https://nullskool.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>데이터쟁이 블로그입니다.</description>
-    <pubDate>Sun, 16 Oct 2022 02:26:45 GMT</pubDate>
+    <pubDate>Sun, 16 Oct 2022 05:41:12 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -25,7 +25,7 @@
       
       
       
-      <content:encoded><![CDATA[<h2 id="게임-개발-2번째-포스트"><a href="#게임-개발-2번째-포스트" class="headerlink" title="게임 개발 2번째 포스트"></a>게임 개발 2번째 포스트</h2><p>  데이터 샘플링 방법에 관한 스터디<br>  <a href="https://forum.unity.com/threads/solved-how-to-sample-transform-position-with-a-precision-of-a-frequency-of-60hz-with-unity3d.442160/">https://forum.unity.com/threads/solved-how-to-sample-transform-position-with-a-precision-of-a-frequency-of-60hz-with-unity3d.442160/</a></p><p>  간단한 방법 : FixedUpdate 설정<br>  약간 더 정확한 방법 : Realtime 타이머를 만들어서 Multi-Thread locking을 사용(타이머와 샘플링 로직을 스레드별로 분리) </p><p>  두둥~ 드. 디. 어 데이터 추출!!<br>  앗…!</p><h3 id="원래-데이터"><a href="#원래-데이터" class="headerlink" title="원래 데이터"></a>원래 데이터</h3><p>  <img src="/2022/10/16/%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C-%EC%9D%BC%EA%B8%B02/%EC%95%88%EB%93%9C%EC%84%BC%EC%84%9C%EC%83%98%ED%94%8C%EB%A7%81_%EC%A4%91%EB%B3%B5.png" alt="샘플링 데이터">  </p><ul><li>하지만 뭔가 비약했었다. 샘플링한 디바이스 센서 값들이 중복이 있었다.<br>  그냥 Input.accel.y 단순히 이렇게 샘플링하면 초당 프레임 레이트가 저하되고 데이터가<br>  밀리거나 싱크가 어긋나서 많은 데이터 중복이 발생한다.  <blockquote><p>일반적인 텍스트 크롤링보다 구현 난이도 높은 편.</p></blockquote></li></ul><h3 id="개선된-데이터"><a href="#개선된-데이터" class="headerlink" title="개선된 데이터"></a>개선된 데이터</h3><p>  <img src="/2022/10/16/%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C-%EC%9D%BC%EA%B8%B02/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%84%BC%EC%84%9C%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%83%98%ED%94%8C%EB%A7%81.png" alt="샘플링 데이터2">  </p><ul><li>멀티스레드 like한 코루틴으로 타이머 로직을 만들어 샘플링한 데이터다. 약간 보기 좋고 깔끔하다.<br>  다행히 데이터 중복현상도 거의 없어졌다.  유니티 프로젝트 셋팅만 건들면 더 좋아질 것 같다.  <blockquote><p>시간은 Audio Source 속성의 playtime이 아닌 TimeStep 개념으로 접근해야 데이터 샘플링이 더욱 수월하다.</p></blockquote></li></ul><h3 id="과연-어디에-쓰이는-데이터일까"><a href="#과연-어디에-쓰이는-데이터일까" class="headerlink" title="과연 어디에 쓰이는 데이터일까?"></a>과연 어디에 쓰이는 데이터일까?</h3><ul><li><p>Anomaly Event Detection, Game Play Pattern generation(Audio Dynamics …)에도 쓰이는 데이터이다.<br>  이벤트 감지에 활용?!.  </p></li><li><p>데이터 학습할때 절.대.로 데이터 전체를 그대로 넣으면 안된다.<br>  분명 메모리 OOM이 날 것이다.<br>  저번 포스트에서 나온 개념인<br>  Data Windowing를 써야 하는 이유이다.  (<em>Batch size보다 우선.</em>)</p></li></ul><h3 id="이-데이터를-게임에-넣고-결과는"><a href="#이-데이터를-게임에-넣고-결과는" class="headerlink" title="이 데이터를 게임에 넣고 결과는??"></a>이 데이터를 게임에 넣고 결과는??</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/vB9kbCt25cY" frameborder="0" loading="lazy" allowfullscreen></iframe></div>]]></content:encoded>
+      <content:encoded><![CDATA[<h2 id="게임-개발-2번째-포스트"><a href="#게임-개발-2번째-포스트" class="headerlink" title="게임 개발 2번째 포스트"></a>게임 개발 2번째 포스트</h2><p>  데이터 샘플링 방법에 관한 스터디<br>  <a href="https://forum.unity.com/threads/solved-how-to-sample-transform-position-with-a-precision-of-a-frequency-of-60hz-with-unity3d.442160/">https://forum.unity.com/threads/solved-how-to-sample-transform-position-with-a-precision-of-a-frequency-of-60hz-with-unity3d.442160/</a></p><p>  간단한 방법 : FixedUpdate 설정<br>  약간 더 정확한 방법 : Realtime 타이머를 만들어서 Multi-Thread locking을 사용(타이머와 샘플링 로직을 스레드별로 분리) </p><p>  두둥~ 드. 디. 어 데이터 추출!!<br>  앗…!</p><h3 id="원래-데이터"><a href="#원래-데이터" class="headerlink" title="원래 데이터"></a>원래 데이터</h3><p>  <img src="/2022/10/16/%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C-%EC%9D%BC%EA%B8%B02/%EC%95%88%EB%93%9C%EC%84%BC%EC%84%9C%EC%83%98%ED%94%8C%EB%A7%81_%EC%A4%91%EB%B3%B5.png" alt="샘플링 데이터">  </p><ul><li>하지만 뭔가 비약했었다. 샘플링한 디바이스 센서 값들이 중복이 있었다.<br>  그냥 Input.accel.y 단순히 이렇게 샘플링하면 초당 프레임 레이트가 저하되고 데이터가<br>  밀리거나 싱크가 어긋나서 많은 데이터 중복이 발생한다.  <blockquote><p>일반적인 텍스트 크롤링보다 구현 난이도 높은 편.</p></blockquote></li></ul><h3 id="개선된-데이터"><a href="#개선된-데이터" class="headerlink" title="개선된 데이터"></a>개선된 데이터</h3><p>  <img src="/2022/10/16/%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C-%EC%9D%BC%EA%B8%B02/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%84%BC%EC%84%9C%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%83%98%ED%94%8C%EB%A7%81.png" alt="샘플링 데이터2">  </p><ul><li>멀티스레드 like한 코루틴으로 타이머 로직을 만들어 샘플링한 데이터다. 약간 보기 좋고 깔끔하다.<br>  다행히 데이터 중복현상도 거의 없어졌다.  유니티 프로젝트 셋팅만 건들면 더 좋아질 것 같다.  <blockquote><p>시간은 Audio Source 속성의 playtime이 아닌 TimeStep 개념으로 접근해야 데이터 샘플링이 더욱 수월하다.</p></blockquote></li></ul><h3 id="과연-어디에-쓰이는-데이터일까"><a href="#과연-어디에-쓰이는-데이터일까" class="headerlink" title="과연 어디에 쓰이는 데이터일까?"></a>과연 어디에 쓰이는 데이터일까?</h3><ul><li><p>Anomaly Event Detection, Game Play Pattern generation(Audio Dynamics …)에도 쓰이는 데이터이다.<br>  이벤트 감지에 활용?!.  </p></li><li><p>데이터 학습할때 절.대.로 데이터 전체를 그대로 넣으면 안된다.<br>  분명 메모리 OOM이 날 것이다.<br>  저번 포스트에서 나온 개념인<br>  Data Windowing를 써야 하는 이유이다.  (<em>Batch size보다 우선.</em>)</p></li></ul><h3 id="이-데이터를-게임에-넣고-결과는"><a href="#이-데이터를-게임에-넣고-결과는" class="headerlink" title="이 데이터를 게임에 넣고 결과는??"></a>이 데이터를 게임에 넣고 결과는??</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/qPx-TerovDk" frameborder="0" loading="lazy" allowfullscreen></iframe></div>]]></content:encoded>
       
       
       <category domain="https://NullSKool.github.io/categories/Game/">Game</category>
@@ -139,9 +139,9 @@
       <category domain="https://NullSKool.github.io/categories/Study/">Study</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
       
       
       <comments>https://nullskool.github.io/2021/07/15/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0/#disqus_thread</comments>
@@ -335,7 +335,7 @@
       
       
       
-      <content:encoded><![CDATA[<h2 id="인공지능-문제해결-경진대회-참가후기-2020-2021-🔔"><a href="#인공지능-문제해결-경진대회-참가후기-2020-2021-🔔" class="headerlink" title="인공지능 문제해결 경진대회 참가후기 2020, 2021 🔔"></a>인공지능 문제해결 경진대회 참가후기 2020, 2021 🔔</h2><p>  정말 치열했던 경진대회였다. </p><p>  처음에는 이미지 멀티라벨 다중 분류 문제가 나왔었고  </p><p>  그 이후 본선대회에서는 NLP, OCR, GAN 등 여러 도메인 문제가 출현했었다  </p><p>  베이스라인 코드 그런건 사실상 없ㅋ음ㅋ..🔐</p><p>  그냥 데이터를 말 그대로 해체 분석을 했어야 했다.</p><p>  아무리 Data Clensing을 해도 그대로인 loss와 score… 8:45🕛</p><p>  결국 아예 리모델링, 데이터 Cleanize 한 뒤에 학습을 다시 돌렸다.</p><p>  천신만고 끝에…</p><p>  <img src="/2020/12/09/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/2222.PNG" alt="최종순위...ㄷㄷㄷ"></p><p>  <img src="/2020/12/09/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/3333.PNG" alt="최종순위 ㅎㄷㄷ"></p><p>  <img src="/2020/12/09/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/4444.PNG" alt="최종순위 ㄷㄷㄷ;;"><br>    참고로 팀명은 <del>풍선띄우기</del> ;;</p><p>  최종 명단에 발표되기까지 엄청난 긴장감이…🌡📈</p>]]></content:encoded>
+      <content:encoded><![CDATA[<h2 id="인공지능-문제해결-경진대회-참가후기-2020-2021-🔔"><a href="#인공지능-문제해결-경진대회-참가후기-2020-2021-🔔" class="headerlink" title="인공지능 문제해결 경진대회 참가후기 2020, 2021 🔔"></a>인공지능 문제해결 경진대회 참가후기 2020, 2021 🔔</h2><p>  정말 치열했던 경진대회였다. </p><p>  처음에는 이미지 멀티라벨 다중 분류 문제가 나왔었고  </p><p>  그 이후 본선대회에서는 NLP, OCR, GAN 등 여러 도메인 문제가 출현했었다  </p><p>  베이스라인 코드 그런건 사실상 없ㅋ음ㅋ..🔐</p><p>  그냥 데이터를 말 그대로 해체 분석을 했어야 했다.</p><p>  아무리 Data Clensing을 해도 그대로인 loss와 score… 8:45🕛</p><p>  결국 아예 리모델링, 데이터 Cleanize 한 뒤에 학습을 다시 돌렸다.</p><p>  천신만고 끝에…</p><p>  <img src="/2020/12/09/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/2222.PNG" alt="최종순위...ㄷㄷㄷ"></p><p>  <img src="/2020/12/09/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/3333.PNG" alt="최종순위 ㅎㄷㄷ"></p><p>  <img src="/2020/12/09/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%ED%9B%84%EA%B8%B0/4444.PNG" alt="최종순위 ㄷㄷㄷ;;"><br>    참고로 팀명은 <del>풍선띄우기</del> ;;</p><p>  명단에 발표되기까지 엄청난 긴장감이…🌡📈</p>]]></content:encoded>
       
       
       <category domain="https://NullSKool.github.io/categories/Competition/">Competition</category>
@@ -487,9 +487,9 @@
       <category domain="https://NullSKool.github.io/categories/Study/">Study</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
       
       
       <comments>https://nullskool.github.io/2020/11/30/%EB%94%A5%EB%9F%AC%EB%8B%9D-%EC%9E%85%EB%AC%B8%EA%B3%BC-%EC%A4%80%EB%B9%847/#disqus_thread</comments>
@@ -515,9 +515,9 @@
       <category domain="https://NullSKool.github.io/categories/Study/">Study</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
       
       
       <comments>https://nullskool.github.io/2020/11/27/%EB%94%A5%EB%9F%AC%EB%8B%9D-%EC%9E%85%EB%AC%B8%EA%B3%BC-%EC%A4%80%EB%B9%846/#disqus_thread</comments>
@@ -571,9 +571,9 @@
       <category domain="https://NullSKool.github.io/categories/Study/">Study</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
       
       
       <comments>https://nullskool.github.io/2020/11/24/%EB%94%A5%EB%9F%AC%EB%8B%9D-%EC%9E%85%EB%AC%B8%EA%B3%BC-%EC%A4%80%EB%B9%844/#disqus_thread</comments>
