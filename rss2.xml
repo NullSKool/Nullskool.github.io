@@ -8,8 +8,8 @@
     
     <atom:link href="https://nullskool.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
-    <description>데이터쟁이 블로그입니다.</description>
-    <pubDate>Sun, 16 Oct 2022 05:41:12 GMT</pubDate>
+    <description>데이터덕후 블로그입니다.</description>
+    <pubDate>Mon, 02 Jan 2023 23:14:16 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -25,7 +25,7 @@
       
       
       
-      <content:encoded><![CDATA[<h2 id="게임-개발-2번째-포스트"><a href="#게임-개발-2번째-포스트" class="headerlink" title="게임 개발 2번째 포스트"></a>게임 개발 2번째 포스트</h2><p>  데이터 샘플링 방법에 관한 스터디<br>  <a href="https://forum.unity.com/threads/solved-how-to-sample-transform-position-with-a-precision-of-a-frequency-of-60hz-with-unity3d.442160/">https://forum.unity.com/threads/solved-how-to-sample-transform-position-with-a-precision-of-a-frequency-of-60hz-with-unity3d.442160/</a></p><p>  간단한 방법 : FixedUpdate 설정<br>  약간 더 정확한 방법 : Realtime 타이머를 만들어서 Multi-Thread locking을 사용(타이머와 샘플링 로직을 스레드별로 분리) </p><p>  두둥~ 드. 디. 어 데이터 추출!!<br>  앗…!</p><h3 id="원래-데이터"><a href="#원래-데이터" class="headerlink" title="원래 데이터"></a>원래 데이터</h3><p>  <img src="/2022/10/16/%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C-%EC%9D%BC%EA%B8%B02/%EC%95%88%EB%93%9C%EC%84%BC%EC%84%9C%EC%83%98%ED%94%8C%EB%A7%81_%EC%A4%91%EB%B3%B5.png" alt="샘플링 데이터">  </p><ul><li>하지만 뭔가 비약했었다. 샘플링한 디바이스 센서 값들이 중복이 있었다.<br>  그냥 Input.accel.y 단순히 이렇게 샘플링하면 초당 프레임 레이트가 저하되고 데이터가<br>  밀리거나 싱크가 어긋나서 많은 데이터 중복이 발생한다.  <blockquote><p>일반적인 텍스트 크롤링보다 구현 난이도 높은 편.</p></blockquote></li></ul><h3 id="개선된-데이터"><a href="#개선된-데이터" class="headerlink" title="개선된 데이터"></a>개선된 데이터</h3><p>  <img src="/2022/10/16/%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C-%EC%9D%BC%EA%B8%B02/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%84%BC%EC%84%9C%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%83%98%ED%94%8C%EB%A7%81.png" alt="샘플링 데이터2">  </p><ul><li>멀티스레드 like한 코루틴으로 타이머 로직을 만들어 샘플링한 데이터다. 약간 보기 좋고 깔끔하다.<br>  다행히 데이터 중복현상도 거의 없어졌다.  유니티 프로젝트 셋팅만 건들면 더 좋아질 것 같다.  <blockquote><p>시간은 Audio Source 속성의 playtime이 아닌 TimeStep 개념으로 접근해야 데이터 샘플링이 더욱 수월하다.</p></blockquote></li></ul><h3 id="과연-어디에-쓰이는-데이터일까"><a href="#과연-어디에-쓰이는-데이터일까" class="headerlink" title="과연 어디에 쓰이는 데이터일까?"></a>과연 어디에 쓰이는 데이터일까?</h3><ul><li><p>Anomaly Event Detection, Game Play Pattern generation(Audio Dynamics …)에도 쓰이는 데이터이다.<br>  이벤트 감지에 활용?!.  </p></li><li><p>데이터 학습할때 절.대.로 데이터 전체를 그대로 넣으면 안된다.<br>  분명 메모리 OOM이 날 것이다.<br>  저번 포스트에서 나온 개념인<br>  Data Windowing를 써야 하는 이유이다.  (<em>Batch size보다 우선.</em>)</p></li></ul><h3 id="이-데이터를-게임에-넣고-결과는"><a href="#이-데이터를-게임에-넣고-결과는" class="headerlink" title="이 데이터를 게임에 넣고 결과는??"></a>이 데이터를 게임에 넣고 결과는??</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/qPx-TerovDk" frameborder="0" loading="lazy" allowfullscreen></iframe></div>]]></content:encoded>
+      <content:encoded><![CDATA[<h2 id="게임-개발-2번째-포스트"><a href="#게임-개발-2번째-포스트" class="headerlink" title="게임 개발 2번째 포스트"></a>게임 개발 2번째 포스트</h2><p>  데이터 샘플링 방법에 관한 스터디<br>  <a href="https://forum.unity.com/threads/solved-how-to-sample-transform-position-with-a-precision-of-a-frequency-of-60hz-with-unity3d.442160/">https://forum.unity.com/threads/solved-how-to-sample-transform-position-with-a-precision-of-a-frequency-of-60hz-with-unity3d.442160/</a></p><p>  간단한 방법 : FixedUpdate 설정<br>  약간 더 정확한 방법 : Realtime 타이머를 만들어서 Multi-Thread locking을 사용(타이머와 샘플링 로직을 스레드별로 분리) </p><p>  두둥~ 드. 디. 어 데이터 추출!!<br>  앗…!</p><h3 id="원래-데이터"><a href="#원래-데이터" class="headerlink" title="원래 데이터"></a>원래 데이터</h3><p>  <img src="/2022/10/16/%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C-%EC%9D%BC%EA%B8%B02/%EC%95%88%EB%93%9C%EC%84%BC%EC%84%9C%EC%83%98%ED%94%8C%EB%A7%81_%EC%A4%91%EB%B3%B5.png" alt="샘플링 데이터">  </p><ul><li>하지만 뭔가 비약했었다. 샘플링한 디바이스 센서 값들이 중복이 있었다.<br>  그냥 Input.accel.y 단순히 이렇게 샘플링하면 초당 프레임 레이트가 저하되고 데이터가<br>  밀리거나 싱크가 어긋나서 많은 데이터 중복이 발생한다.  <blockquote><p>일반적인 텍스트 크롤링보다 구현 난이도 있는 편.</p></blockquote></li></ul><h3 id="개선된-데이터"><a href="#개선된-데이터" class="headerlink" title="개선된 데이터"></a>개선된 데이터</h3><p>  <img src="/2022/10/16/%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C-%EC%9D%BC%EA%B8%B02/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%84%BC%EC%84%9C%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%83%98%ED%94%8C%EB%A7%81.png" alt="샘플링 데이터2">  </p><ul><li>멀티스레드 like한 코루틴으로 타이머 로직을 만들어 샘플링한 데이터다. 약간 보기 좋고 깔끔하다.<br>  다행히 데이터 중복현상도 거의 없어졌다.  유니티 프로젝트 셋팅만 건들면 더 좋아질 것 같다.  <blockquote><p>시간은 Audio Source 속성의 playtime이 아닌 TimeStep 개념으로 접근해야 데이터 샘플링이 더욱 수월하다.</p></blockquote></li></ul><h3 id="과연-어디에-쓰이는-데이터일까"><a href="#과연-어디에-쓰이는-데이터일까" class="headerlink" title="과연 어디에 쓰이는 데이터일까?"></a>과연 어디에 쓰이는 데이터일까?</h3><ul><li><p>Anomaly Event Detection, Game Play Pattern generation(Audio Dynamics …)에도 쓰이는 데이터이다.<br>  이벤트 감지에 활용?!.  </p></li><li><p>데이터 학습할때 절.대.로 데이터 전체를 그대로 넣으면 안된다.<br>  분명 메모리 OOM이 날 것이다.<br>  저번 포스트에서 나온 개념인<br>  Data Windowing를 써야 하는 이유이다.  (<em>Batch size보다 우선.</em>)</p></li></ul><h3 id="이-데이터를-게임에-넣고-결과는"><a href="#이-데이터를-게임에-넣고-결과는" class="headerlink" title="이 데이터를 게임에 넣고 결과는??"></a>이 데이터를 게임에 넣고 결과는??</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/qPx-TerovDk" frameborder="0" loading="lazy" allowfullscreen></iframe></div>]]></content:encoded>
       
       
       <category domain="https://NullSKool.github.io/categories/Game/">Game</category>
@@ -78,12 +78,12 @@
       
         
         
-      <description>&lt;h2 id=&quot;우분투-동적-라이브러리-빌드-후-안될때…-feat-protobuf&quot;&gt;&lt;a href=&quot;#우분투-동적-라이브러리-빌드-후-안될때…-feat-protobuf&quot; class=&quot;headerlink&quot; title=&quot;우분투 동적 라이브러리 빌드 후 안될</description>
+      <description>&lt;h2 id=&quot;우분투-동적-라이브러리-빌드-후-안될때…-feat-CUDA&quot;&gt;&lt;a href=&quot;#우분투-동적-라이브러리-빌드-후-안될때…-feat-CUDA&quot; class=&quot;headerlink&quot; title=&quot;우분투 동적 라이브러리 빌드 후 안될때…(feat.</description>
         
       
       
       
-      <content:encoded><![CDATA[<h2 id="우분투-동적-라이브러리-빌드-후-안될때…-feat-protobuf"><a href="#우분투-동적-라이브러리-빌드-후-안될때…-feat-protobuf" class="headerlink" title="우분투 동적 라이브러리 빌드 후 안될때…(feat. protobuf)"></a>우분투 동적 라이브러리 빌드 후 안될때…(feat. protobuf)</h2><p>  예를 들어 ldd 의존성 체크에서 libc10.so 파일이 링크 확인할 때</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IFS=<span class="string">&#x27;:&#x27;</span> ; <span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$LD_LIBRARY_PATH</span>; <span class="keyword">do</span> <span class="built_in">ls</span> -l <span class="variable">$i</span>/libc10.so 2&gt;/dev/null;<span class="keyword">done</span></span><br></pre></td></tr></table></figure><p>  여기에서 아무것도 리턴 안되면 링크가 안되어 있는 상태임.<br>  해결책 </p><ol><li>export LD_LIBRARY_PATH &#x3D; &#x2F;somepath&#x2F;bin:$LD_LIBRARY_PATH</li><li>ld.so.conf.d&#x2F;someconf.conf 셋팅</li></ol>]]></content:encoded>
+      <content:encoded><![CDATA[<h2 id="우분투-동적-라이브러리-빌드-후-안될때…-feat-CUDA"><a href="#우분투-동적-라이브러리-빌드-후-안될때…-feat-CUDA" class="headerlink" title="우분투 동적 라이브러리 빌드 후 안될때…(feat. CUDA)"></a>우분투 동적 라이브러리 빌드 후 안될때…(feat. CUDA)</h2><p>  예를 들어 ldd 의존성 체크에서 libc10.so 파일이 링크 확인할 때</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IFS=<span class="string">&#x27;:&#x27;</span> ; <span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$LD_LIBRARY_PATH</span>; <span class="keyword">do</span> <span class="built_in">ls</span> -l <span class="variable">$i</span>/libc10.so 2&gt;/dev/null;<span class="keyword">done</span></span><br></pre></td></tr></table></figure><p>  여기에서 아무것도 리턴 안되면 링크가 안되어 있는 상태임.<br>  해결책 </p><ol><li>export LD_LIBRARY_PATH &#x3D; &#x2F;somepath&#x2F;bin:$LD_LIBRARY_PATH</li><li>ld.so.conf.d&#x2F;someconf.conf 셋팅</li></ol>]]></content:encoded>
       
       
       
@@ -139,9 +139,9 @@
       <category domain="https://NullSKool.github.io/categories/Study/">Study</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
       
       
       <comments>https://nullskool.github.io/2021/07/15/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0/#disqus_thread</comments>
@@ -341,9 +341,9 @@
       <category domain="https://NullSKool.github.io/categories/Competition/">Competition</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/Try/">Try</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/Try/">Try</category>
       
       <category domain="https://NullSKool.github.io/tags/competition/">competition</category>
       
@@ -487,9 +487,9 @@
       <category domain="https://NullSKool.github.io/categories/Study/">Study</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
       
       
       <comments>https://nullskool.github.io/2020/11/30/%EB%94%A5%EB%9F%AC%EB%8B%9D-%EC%9E%85%EB%AC%B8%EA%B3%BC-%EC%A4%80%EB%B9%847/#disqus_thread</comments>
@@ -515,9 +515,9 @@
       <category domain="https://NullSKool.github.io/categories/Study/">Study</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
       
       
       <comments>https://nullskool.github.io/2020/11/27/%EB%94%A5%EB%9F%AC%EB%8B%9D-%EC%9E%85%EB%AC%B8%EA%B3%BC-%EC%A4%80%EB%B9%846/#disqus_thread</comments>
@@ -571,9 +571,9 @@
       <category domain="https://NullSKool.github.io/categories/Study/">Study</category>
       
       
-      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
-      
       <category domain="https://NullSKool.github.io/tags/DL/">DL</category>
+      
+      <category domain="https://NullSKool.github.io/tags/ML/">ML</category>
       
       
       <comments>https://nullskool.github.io/2020/11/24/%EB%94%A5%EB%9F%AC%EB%8B%9D-%EC%9E%85%EB%AC%B8%EA%B3%BC-%EC%A4%80%EB%B9%844/#disqus_thread</comments>
